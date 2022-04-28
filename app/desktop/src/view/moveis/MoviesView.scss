@@ -1,0 +1,91 @@
+.moviesview {
+  .header-container {
+    background: rgb(226, 226, 226);
+    border-radius: 30px;
+    
+    .btn-search {
+      height: 46px;
+      background: rgba( 1, 180, 228, 1) !important;
+      border-radius: 30px;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+      color: white;
+      padding: 8px;
+      cursor: pointer;
+    }    
+  }
+  .container-dataview {
+    width: 150px;
+    height: 315px;
+    margin: 10px !important;
+  
+  }
+
+  .conatiner-photo{
+    width: 150px;
+    height: 230px;
+    border-radius: 5px;
+  }
+
+  .conatiner-text{
+    width: 150px;
+    height: 85px;
+    margin-top: 0px;
+  }
+  .title-movie{
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #000000;
+    margin-left: 4px;
+  }
+  .date-movie{
+    font-size: 13px !important;
+    color: #000000;
+    margin-left: 4px;
+  }
+  .title{
+    color: black;
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  .poster{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px !important;
+  }
+
+  .box{
+    height: 50px !important;
+    margin-top: -25px !important;
+  }
+  .box-cicle svg{
+    width: 60px !important;
+    height: 50px !important;
+  }
+
+  circle{
+    width: 70px !important;
+    height: 65px !important;
+    stroke: #000000;
+    stroke-width: 5;
+    transform: translate(5px, 5px);
+    stroke-dasharray: 126 !important;
+    stroke-dashoffset: 126;
+  }
+  circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: rgba( 1, 180, 228, 1) !important;
+  }
+  circle:nth-child(2){
+    stroke: rgb(31, 194, 114);
+  }
+
+  h2{
+    font-size: 14px;
+    color: white;
+    margin-top: -40px;
+    margin-left: 12px;
+  }
+}

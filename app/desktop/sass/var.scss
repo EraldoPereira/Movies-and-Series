@@ -1,0 +1,9 @@
+//$base-color:#03045E; //Themer Blue
+//$base-color:#EF5350; //red-ish
+//$base-color:#8D6E63; //brown-ish
+//$base-color:#26A69A; //green-ish
+$base-foreground-color: dynamic($base-light-color);
+$reverse-background-color: dynamic(#03045E);
+$accent-color: dynamic(#90E0EF);
+$accent-light-color: dynamic(#00FF00);
+$accent-dark-color: dynamic(#101010);
