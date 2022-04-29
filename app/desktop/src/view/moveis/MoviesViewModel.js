@@ -1,4 +1,4 @@
-Ext.define('MoviesAndSeries.view.home.MoviesViewModel', {
+Ext.define('MoviesAndSeries.view.movies.MoviesViewModel', {
 	extend: 'Ext.app.ViewModel',
 	alias: 'viewmodel.movies-viewmodel',
 	data: {

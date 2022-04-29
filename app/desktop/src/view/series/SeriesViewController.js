@@ -1,22 +1,22 @@
-Ext.define('MoviesAndSeries.view.movies.MoviesViewController', {
+Ext.define('MoviesAndSeries.view.series.SeriesViewController', {
 	extend: 'Ext.app.ViewController',
-	alias: 'controller.movies-viewcontroller',
+	alias: 'controller.series-viewcontroller',
 
 	init: function () {
 		const me = this;
-		me.beforeShowMovies();
+		me.beforeShowSeries();
 	},
-	beforeShowMovies: function (action) {
+	beforeShowSeries: function (action) {
 		const me = this;
 		Ext.Ajax.request({
-			url: 'https://api.themoviedb.org/3/discover/movie?api_key=&language=pt-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
+			url: 'https://api.themoviedb.org/3/trending/tv/week?api_key=cba65332&language=en-US',
 			method: 'get',
 			scope: me,
-			success: me.beforeShowMoviesSuccess,
-			failure: me.beforeShowMoviesFaliure
+			success: me.beforeShowSeriesSuccess,
+			failure: me.beforeShowSeriesFaliure
 		})
 	},
-	beforeShowMoviesSuccess: function (response, options, action) {
+	beforeShowSeriesSuccess: function (response, options, action) {
 		const me = this;
 		const viewModel = me.getViewModel();
 		const data = Ext.decode(response.responseText, true);
@@ -24,7 +24,7 @@ Ext.define('MoviesAndSeries.view.movies.MoviesViewController', {
 		const store = viewModel.getStore('items');
 		store.loadData(viewModel.get('items'), true);
 	},
-	beforeShowMoviesFaliure: function (response, options, action) {
+	beforeShowSeriesFaliure: function (response, options, action) {
 		console.error(response);
 	},
 	onDataviewTap: function () {
@@ -35,20 +35,20 @@ Ext.define('MoviesAndSeries.view.movies.MoviesViewController', {
 		const viewModel = me.getViewModel();
 		viewModel.set('searchText', rawValue);
 	},
-	onSearchMovie: function () {
+	onSearchSeries: function () {
 		const me = this;
 		const viewModel = me.getViewModel();
 		const searchText = viewModel.get('searchText');
 		Ext.Ajax.request({
-			url: `https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query=${searchText}&page=1&include_adult=false`,
+			url: `https://api.themoviedb.org/3/search/tv?api_key=&language=en-US&page=1&query=${searchText}&include_adult=false`,
 			method: 'get',
 			scope: me,
-			success: me.onSearchMovieSuccess,
-			failure: me.onSearchMovieFaliure
+			success: me.onSearchSeriesSuccess,
+			failure: me.onSearchSeriesFaliure
 		})
 
 	},
-	onSearchMovieSuccess: function (response, options, action) {
+	onSearchSeriesSuccess: function (response, options, action) {
 		const me = this;
 		const viewModel = me.getViewModel();
 		const data = Ext.decode(response.responseText, true);
@@ -56,7 +56,7 @@ Ext.define('MoviesAndSeries.view.movies.MoviesViewController', {
 		const store = viewModel.getStore('items');
 		store.loadData(viewModel.get('items'), false);
 	},
-	onSearchMovieFaliure: function (response, options, action) {
+	onSearchSeriesFaliure: function (response, options, action) {
 		console.error(response);
 	}
 

@@ -1,9 +1,9 @@
-Ext.define('MoviesAndSeries.view.movies.MoviesView', {
+Ext.define('MoviesAndSeries.view.series.SeriesView', {
     extend: 'Ext.container.Container',
-    xtype: 'moviesview',
-    cls: 'moviesview',
-    controller: 'movies-viewcontroller',
-    viewModel: 'movies-viewmodel',
+    xtype: 'seriesview',
+    cls: 'seriesview',
+    controller: 'series-viewcontroller',
+    viewModel: 'series-viewmodel',
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -20,7 +20,7 @@ Ext.define('MoviesAndSeries.view.movies.MoviesView', {
             margin: '0 -20 0 20',
             flex: 1,
             cls: 'header-label',
-            placeholder: 'Search for a movie',
+            placeholder: 'Search for a series',
             bind: {
                 value: '{searchText}'
             },
@@ -36,7 +36,7 @@ Ext.define('MoviesAndSeries.view.movies.MoviesView', {
             listeners: {
                 click: {
                     element: 'element',
-                    fn: 'onSearchMovie'
+                    fn: 'onSearchSeries'
                 }
             }
         }]
@@ -44,7 +44,7 @@ Ext.define('MoviesAndSeries.view.movies.MoviesView', {
         xtype: 'component',
         margin: '15 0 15 15',
         cls: 'title',
-        html: 'Os Mais Populares'
+        html: 'Most Popular'
     }, {
         xtype: 'container',
         flex: 1,
@@ -82,8 +82,8 @@ Ext.define('MoviesAndSeries.view.movies.MoviesView', {
                         </div>
                     </div>
                     <div class="conatiner-text">
-                        <div class="title-movie">{original_title}</div>
-                        <div class="date-movie">{release_date}</div>
+                        <div class="title-movie">{name}</div>
+                        <div class="date-movie">{first_air_date}</div>
                     </div>
                 </div>    
             `,

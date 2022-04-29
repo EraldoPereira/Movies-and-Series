@@ -1,6 +1,7 @@
 {
   "leaf": false,
   "children": [
-    { "text": "Movies", "iconCls": "x-fa fa-table", "xtype": "moviesview","leaf": true }
+    { "text": "Movies", "iconCls": "x-fa fa-film", "xtype": "moviesview","leaf": true },
+    { "text": "Series", "iconCls": "x-fa fa-tv", "xtype": "seriesview","leaf": true }
   ]
 }
