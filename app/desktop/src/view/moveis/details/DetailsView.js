@@ -1,9 +1,9 @@
-Ext.define('MoviesAndSeries.view.movies.MoviesView', {
+Ext.define('MoviesAndSeries.view.movies.details.DetailsView', {
     extend: 'Ext.container.Container',
-    xtype: 'moviesview',
-    cls: 'moviesview',
-    controller: 'movies-viewcontroller',
-    viewModel: 'movies-viewmodel',
+    xtype: 'detailsview',
+    cls: 'detailsview',
+    controller: 'movies-detailsviewcontroller',
+    viewModel: 'movies-detailsviewmodel',
     layout: {
         type: 'vbox',
         align: 'stretch'

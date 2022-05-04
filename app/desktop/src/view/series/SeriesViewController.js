@@ -9,7 +9,7 @@ Ext.define('MoviesAndSeries.view.series.SeriesViewController', {
 	beforeShowSeries: function (action) {
 		const me = this;
 		Ext.Ajax.request({
-			url: 'https://api.themoviedb.org/3/trending/tv/week?api_key=cba65332&language=en-US',
+			url: 'https://api.themoviedb.org/3/trending/tv/week?api_key=3b6fdd349800bb27c9346695cba65332&language=en-US',
 			method: 'get',
 			scope: me,
 			success: me.beforeShowSeriesSuccess,
@@ -40,7 +40,7 @@ Ext.define('MoviesAndSeries.view.series.SeriesViewController', {
 		const viewModel = me.getViewModel();
 		const searchText = viewModel.get('searchText');
 		Ext.Ajax.request({
-			url: `https://api.themoviedb.org/3/search/tv?api_key=&language=en-US&page=1&query=${searchText}&include_adult=false`,
+			url: `https://api.themoviedb.org/3/search/tv?api_key=3b6fdd349800bb27c9346695cba65332&language=en-US&page=1&query=${searchText}&include_adult=false`,
 			method: 'get',
 			scope: me,
 			success: me.onSearchSeriesSuccess,
