@@ -1,7 +1,10 @@
 Ext.define('MoviesAndSeries.Application', {
 	extend: 'Ext.app.Application',
 	name: 'MoviesAndSeries',
-	requires: ['MoviesAndSeries.*'],
+	requires: [
+		'MoviesAndSeries.*',
+		'Ext.Img'
+	],
 	defaultToken: 'moviesview',
 
 	removeSplash: function () {

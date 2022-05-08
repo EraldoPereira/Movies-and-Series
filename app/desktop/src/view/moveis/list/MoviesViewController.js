@@ -29,7 +29,7 @@ Ext.define('MoviesAndSeries.view.movies.list.MoviesViewController', {
 	},
 	onDataviewTap: function (element, {record}, tes) {
 		const me = this;
-		me.getDetails(record.id,  'pt-BR', '3b6fdd349800bb27c9346695cba65332');
+		me.redirectTo(`movies/details/${record.id}`);
 	},
 	onChangeLabelSearch: function ({rawValue}, e, eOpts) {
 		const me = this;

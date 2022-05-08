@@ -118,6 +118,9 @@
     ],
     "watch": {
       "delay": 250
+    },
+    "config": {
+      "apiKey": "3b6fdd349800bb27c9346695cba65332"
     }
   },
 

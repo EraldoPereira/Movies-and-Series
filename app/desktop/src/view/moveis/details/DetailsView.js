@@ -1,5 +1,5 @@
 Ext.define('MoviesAndSeries.view.movies.details.DetailsView', {
-    extend: 'Ext.container.Container',
+    extend: 'Ext.Container',
     xtype: 'detailsview',
     cls: 'detailsview',
     controller: 'movies-detailsviewcontroller',
@@ -10,87 +10,127 @@ Ext.define('MoviesAndSeries.view.movies.details.DetailsView', {
     },
     items: [{
         xtype: 'container',
-        cls: 'header-container',
         layout: {
             type: 'hbox',
             align: 'stretch'
         },
         items: [{
-            xtype: 'textfield',
-            margin: '0 -20 0 20',
-            flex: 1,
-            cls: 'header-label',
-            placeholder: 'Search for a movie',
+            xtype: 'image',
+            cls: 'main-image',
+            height: 480,
+            width: 300,
             bind: {
-                value: '{searchText}'
-            },
-            listeners: {
-                blur: 'onChangeLabelSearch'
+                src: '{posterPath}'
             }
-
         }, {
-            xtype: 'component',
-            cls: 'btn-search',
-            width: 120,
-            html: 'Search',
-            listeners: {
-                click: {
-                    element: 'element',
-                    fn: 'onSearchMovie'
-                }
-            }
-        }]
-    }, {
-        xtype: 'component',
-        margin: '15 0 15 15',
-        cls: 'title',
-        html: 'Os Mais Populares'
-    }, {
-        xtype: 'container',
-        flex: 1,
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'dataview',
-            reference: 'dataview',
-            flex: 1,
+            xtype: 'container',
+            margin: '8 0 0 20',
             layout: {
-                type: 'hbox',
-                align: 'stretch',
-                pack: 'start',
-                wrap: true
+                type: 'vbox',
+                align: 'stretch'
             },
-            bind: {
-                store: '{items}'
-            },
-            itemTpl: `
-                <div class="container-dataview">
-                    <div class="conatiner-photo" >
-                        <img class="poster" src="{poster_path}"></img>
-                    </div>
-                    <div class="box">
-                        <div class="box-cicle">
-                            <svg>
-                                <circle cx="20" cy="20" r="20" ></circle>
-                                <circle cx="20" cy="20" r="20" style="stroke-dashoffset: calc(126 - ( ( 126 * {vote_average}) / 100 ))"></circle>
-                            </svg>
-                        </div>
-                        <div>
-                            <h2>{vote_average}%</h2>
-                        </div>
-                    </div>
-                    <div class="conatiner-text">
-                        <div class="title-movie">{original_title}</div>
-                        <div class="date-movie">{release_date}</div>
-                    </div>
-                </div>    
-            `,
-            listeners: {
-                childtap: 'onDataviewTap'
-            }
+            items: [{
+                xtype: 'container',
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'component',
+                    cls: 'movie-title',
+                    bind: {
+                        html: '{record.title}'
+                    }
+                }, {
+                    xtype: 'component',
+                    margin: '0 0 0 10',
+                    cls: 'movie-year',
+                    bind: {
+                        html: '({releaseDateYear})'
+                    }
+                }]
+            }, {
+                xtype: 'container',
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                items: [/* {
+                    xtype: 'component',
+                    padding: '2',
+                    cls: 'movie-rating',
+                    html: '18'
+                },  */{
+                        xtype: 'component',
+                        margin: '0 0 0 8',
+                        cls: 'movie-text',
+                        bind: {
+                            html: '{releaseDate} (BR)'
+                        }
+                    }, {
+                        xtype: 'component',
+                        margin: '0 0 0 8',
+                        cls: 'movie-text',
+                        bind: {
+                            html: '{genres}'
+                        }
+                    }, {
+                        xtype: 'component',
+                        margin: '0 0 0 8',
+                        cls: 'movie-text',
+                        bind: {
+                            html: '{runtime}'
+                        }
+                    }]
+            }, {
+                xtype: 'container',
+                margin: '8 0 0 0',
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'component',
+                    bind: {
+                        html: `
+                        <div class="box">
+                            <div class="box-cicle">
+                                <svg>
+                                    <circle cx="50" cy="50" r="50" ></circle>
+                                    <circle cx="50" cy="50" r="50" style="stroke-dashoffset: calc(315 - ( ( 315 * ({record.vote_average} * 10)) / 100 ))"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2>{record.vote_average * 10}%</h2>
+                            </div>
+                        </div>`
+                    }
+                }, {
+                    xtype: 'component',
+                    width: 80,
+                    alignSelf: 'center',
+                    margin: '0 0 0 10',
+                    cls: 'movie-text',
+                    html: 'Avaliação dos usuários'
+                }]
+            }, {
+                xtype: 'component',
+                margin: '10 0 0 0',
+                cls: 'movie-text-bold',
+                html: 'Sinopse'
+            }, {
+                xtype: 'component',
+                flex: 1,
+                margin: '8 0 0 4',
+                cls: 'movie-text',
+                maxWidth: 720,
+                bind: {
+                    html: '{record.overview}'
+                }
+            }]
         }]
+    }, {
+
     }]
 });
 
