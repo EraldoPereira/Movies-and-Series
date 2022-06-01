@@ -10,5 +10,4 @@ Ext.define('MoviesAndSeries.view.movies.list.MoviesViewModel', {
             type: 'movies-store'
         }
 	}
-
 });

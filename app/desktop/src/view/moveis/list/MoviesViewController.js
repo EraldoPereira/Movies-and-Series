@@ -1,37 +1,21 @@
 Ext.define('MoviesAndSeries.view.movies.list.MoviesViewController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.movies-viewcontroller',
-
 	init: function () {
 		const me = this;
-		me.beforeShowMovies();
+		me.setUp();
 	},
-	beforeShowMovies: function (action) {
-		const me = this;
-		Ext.Ajax.request({
-			url: 'https://api.themoviedb.org/3/discover/movie?api_key=3b6fdd349800bb27c9346695cba65332&language=pt-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
-			method: 'get',
-			scope: me,
-			success: me.beforeShowMoviesSuccess,
-			failure: me.beforeShowMoviesFaliure
-		})
-	},
-	beforeShowMoviesSuccess: function (response, options, action) {
+	setUp: function () {
 		const me = this;
 		const viewModel = me.getViewModel();
-		const data = Ext.decode(response.responseText, true);
-		viewModel.set({ items: data.results });
 		const store = viewModel.getStore('items');
-		store.loadData(viewModel.get('items'), true);
+		store.loadData(viewModel.get('record.results'), false);
 	},
-	beforeShowMoviesFaliure: function (response, options, action) {
-		console.error(response);
-	},
-	onDataviewTap: function (element, {record}, tes) {
+	onDataviewTap: function (element, { record }, tes) {
 		const me = this;
 		me.redirectTo(`movies/details/${record.id}`);
 	},
-	onChangeLabelSearch: function ({rawValue}, e, eOpts) {
+	onChangeLabelSearch: function ({ rawValue }, e, eOpts) {
 		const me = this;
 		const viewModel = me.getViewModel();
 		viewModel.set('searchText', rawValue);
@@ -59,27 +43,7 @@ Ext.define('MoviesAndSeries.view.movies.list.MoviesViewController', {
 	},
 	onSearchMovieFaliure: function (response, options, action) {
 		console.error(response);
-	},
-	getDetails: function (movieId, language, apiKey) {
-		const me = this;
-		Ext.Ajax.request({
-			url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=${language}`,
-			method: 'get',
-			scope: me,
-			success: me.getDetailsSuccess,
-			failure: me.getDetailsFaliure
-		})
-	},
-	getDetailsSuccess: function (response, options, action) {
-		const me = this;
-		const viewModel = me.getViewModel();
-		const data = Ext.decode(response.responseText, true);
-		viewModel.set({ items: data.results });
-		const store = viewModel.getStore('items');
-		store.loadData(viewModel.get('items'), false);
-	},
-	getDetailsFaliure: function (response, options, action) {
-		console.error(response);
 	}
+
 
 });

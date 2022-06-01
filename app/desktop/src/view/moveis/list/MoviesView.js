@@ -3,7 +3,6 @@ Ext.define('MoviesAndSeries.view.movies.list.MoviesView', {
     xtype: 'moviesview',
     cls: 'moviesview',
     controller: 'movies-viewcontroller',
-    viewModel: 'movies-viewmodel',
     layout: {
         type: 'vbox',
         align: 'stretch'

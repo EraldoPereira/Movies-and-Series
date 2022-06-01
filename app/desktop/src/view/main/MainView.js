@@ -5,22 +5,32 @@ Ext.define('MoviesAndSeries.view.main.MainView', {
     viewModel: {
         type: 'mainviewmodel'
     },
-    requires: [
-        'Ext.layout.Fit'
-    ],
-    layout: 'fit',
+    layout: {
+        type: 'vbox'
+    },
     items: [{
-        xtype: 'navview',
-        reference: 'navview',
-        docked: 'left',
-        bind: {
-            width: '{navview_width}'
+        xtype: 'container',
+        layout: {
+            type: 'hbox',
+            aling: 'stretch'
         },
-        listeners: {
-            select: "onMenuViewSelectionChange"
-        }
+        items:[{
+            xtype: 'component',
+            html: 'Filmes'
+        }, {
+            xtype: 'component',
+            html: 'Series'
+        }]
     }, {
-        xtype: 'centerview',
-        reference: 'centerview'
+        xtype: 'container',
+        flex: 1,
+        reference: 'centerView',
+        layout: {
+            type: 'card'
+        },
+        defaults: {
+            scrollable: 'y'
+        },
+        items:[]
     }]
 });
