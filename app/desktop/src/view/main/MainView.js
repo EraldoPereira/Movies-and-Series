@@ -1,6 +1,7 @@
 Ext.define('MoviesAndSeries.view.main.MainView', {
     extend: 'Ext.Container',
     xtype: 'mainview',
+    cls: 'mainview',
     controller: 'mainviewcontroller',
     viewModel: {
         type: 'mainviewmodel'
@@ -10,16 +11,23 @@ Ext.define('MoviesAndSeries.view.main.MainView', {
     },
     items: [{
         xtype: 'container',
+        height: 50,
+        cls: 'container-header',
         layout: {
             type: 'hbox',
             aling: 'stretch'
         },
         items:[{
             xtype: 'component',
+            cls: 'text-header',
             html: 'Filmes'
         }, {
             xtype: 'component',
-            html: 'Series'
+            cls: 'text-header',
+            html: 'Series',
+            listeners: {
+                tap: 'onSeriesTap'
+            }
         }]
     }, {
         xtype: 'container',

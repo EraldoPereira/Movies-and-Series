@@ -1,3 +1,14 @@
 // sass for MoviesAndSeries.view.home.MainView
-.mainview { 
-}
+.mainview {
+    .container-header{
+        background-color: rgb(3, 37, 65);
+    }
+    .text-header{
+        font-size: 20px;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        align-self: center;
+        cursor: pointer;
+    }
+} 

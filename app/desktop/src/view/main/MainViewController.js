@@ -11,24 +11,22 @@ Ext.define('MoviesAndSeries.view.main.MainViewController', {
 			action: 'showMovies',
 			before: 'beforeShowMovies'
 		},
-		/* ':viewType': {
-			action: 'activateViewByRoute',
-			conditions: {
-				':viewType': '(.*)'
-			}
-		} */
+		'series': {
+			action: 'showSeries',
+			before: 'beforeShowSeries'
+		},
 	},
 
 	updateView: function (options) {
 		const me = this;
 		const centerView = me.lookup('centerView');
 		centerView.removeAll();
-		if ( typeof options !== 'string' ) {
+		if (typeof options !== 'string') {
 			try {
 				const newView = centerView.add(options.viewModel ? {
 					xtype: options.viewType,
 					viewModel: options.viewModel
-				} : {	
+				} : {
 					xtype: options.viewType,
 				})
 			} catch (ex) {
@@ -40,16 +38,6 @@ Ext.define('MoviesAndSeries.view.main.MainViewController', {
 			xtype: options
 		});
 	},
-
-	/* activateViewByRoute: function(viewId){
-		if(viewId.match('/')) {return}
-		const centerView = this.lookup('centerView');
-		centerView.removeAll();
-		const item = centerView.add({
-			xtype: viewId
-		});
-		centerView.setActiveItem(item); 
-	}, */
 
 	showMovies: function () {
 		const me = this;
@@ -121,5 +109,9 @@ Ext.define('MoviesAndSeries.view.main.MainViewController', {
 	beforeShowMoviesDetailsFaliure: function (response, options, action) {
 		console.error(response);
 		action.stop();
+	},
+	onSeriesTap: function () {
+		debugger
+		this.redirecTo("series")
 	}
 });

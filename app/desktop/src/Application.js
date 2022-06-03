@@ -5,7 +5,7 @@ Ext.define('MoviesAndSeries.Application', {
 		'MoviesAndSeries.*',
 		'Ext.Img'
 	],
-	defaultToken: 'moviesview',
+	defaultToken: 'movies',
 
 	removeSplash: function () {
 		Ext.getBody().removeCls('launching')
